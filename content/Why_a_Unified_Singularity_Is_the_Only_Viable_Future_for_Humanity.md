@@ -24,9 +24,9 @@ In summary, our present world, for all its progress is limited by divisions that
 
 To clarify the contrast between the status quo and a singularity future, consider the following high-level comparison:
 
-![Image Placeholder](IMAGE_PLACEHOLDER)
+![A comparison table showing the current fragmented world versus the unified singularity model across economy, governance, standards, technology access, social equality, and crisis response](/content/media/singularity_comparison_table.png)
 
-the path of humanity from chaos to coordinated progress
+*The path of humanity from chaos to coordinated progress*
 
 ## Converging Technologies: The Engines of Singularity
 

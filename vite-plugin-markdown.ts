@@ -2,7 +2,23 @@ import type { Plugin } from 'vite'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 import { execSync } from 'child_process'
+import { readFileSync, existsSync } from 'fs'
 import path from 'path'
+
+let authorsMap: Record<string, string> | null = null
+
+function loadAuthorsMap(root: string): Record<string, string> {
+  if (authorsMap !== null) return authorsMap
+  const authorsPath = path.join(root, 'content', '.authors.json')
+  if (existsSync(authorsPath)) {
+    try {
+      authorsMap = JSON.parse(readFileSync(authorsPath, 'utf-8'))
+      return authorsMap!
+    } catch { /* fall through */ }
+  }
+  authorsMap = {}
+  return authorsMap
+}
 
 function titleFromFilename(filepath: string): string {
   const name = path.basename(filepath, '.md')
@@ -37,9 +53,15 @@ function extractExcerpt(html: string, maxLen = 160): string {
 }
 
 export default function markdownPlugin(): Plugin {
+  let root = process.cwd()
+
   return {
     name: 'vite-plugin-markdown',
     enforce: 'pre',
+
+    configResolved(config) {
+      root = config.root
+    },
 
     transform(code: string, id: string) {
       if (!id.endsWith('.md')) return null
@@ -50,7 +72,12 @@ export default function markdownPlugin(): Plugin {
       const title = frontmatter.title || titleFromFilename(id)
       const git = getGitInfo(id)
       const date = frontmatter.date || git.date
-      const author = frontmatter.author || git.author
+
+      // Author resolution: .authors.json (CI) > frontmatter > git fallback
+      const authors = loadAuthorsMap(root)
+      const filename = path.basename(id)
+      const author = frontmatter.author || authors[filename] || git.author
+
       const excerpt = frontmatter.excerpt || extractExcerpt(html)
 
       const meta = { title, date, author, excerpt }
