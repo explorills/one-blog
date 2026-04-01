@@ -1,9 +1,8 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Clock, User } from '@phosphor-icons/react'
+import { ArrowLeft, Clock, GithubLogo } from '@phosphor-icons/react'
 import { ArticleContent } from '@/components/blog/ArticleContent'
-import { TagBadge } from '@/components/blog/TagBadge'
 import { getPostBySlug } from '@/lib/blog'
 import { formatDate } from '@/lib/utils'
 
@@ -27,6 +26,8 @@ export default function ArticlePage() {
   }, [slug])
 
   if (!post) return <Navigate to="/404" replace />
+
+  const authorGithubUrl = `https://github.com/${post.frontmatter.author}`
 
   return (
     <article>
@@ -76,30 +77,26 @@ export default function ArticlePage() {
 
           {/* Meta row */}
           <div
-            className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-[12px] text-muted-foreground mb-4"
+            className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] sm:text-[12px] text-muted-foreground mb-8"
             style={{ fontFamily: "'Roboto Mono', monospace" }}
           >
             <time>{formatDate(post.frontmatter.date)}</time>
             <span className="w-px h-3 bg-border" />
-            <span className="flex items-center gap-1">
-              <User weight="regular" className="w-3 h-3" />
+            <a
+              href={authorGithubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+            >
+              <GithubLogo weight="regular" className="w-3 h-3" />
               {post.frontmatter.author}
-            </span>
+            </a>
             <span className="w-px h-3 bg-border" />
             <span className="flex items-center gap-1">
               <Clock weight="regular" className="w-3 h-3" />
               {post.readingTime} min read
             </span>
           </div>
-
-          {/* Tags */}
-          {post.frontmatter.tags?.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-8">
-              {post.frontmatter.tags.map((tag) => (
-                <TagBadge key={tag} tag={tag} />
-              ))}
-            </div>
-          )}
         </motion.div>
 
         {/* Divider */}

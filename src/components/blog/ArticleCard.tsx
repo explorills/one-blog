@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Clock } from '@phosphor-icons/react'
-import { TagBadge } from './TagBadge'
 import { formatDate } from '@/lib/utils'
 import type { BlogPost } from '@/types/blog'
 
@@ -66,18 +65,9 @@ export function ArticleCard({ post }: { post: BlogPost }) {
           </h2>
 
           {/* Excerpt */}
-          <p className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-3">
+          <p className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
             {post.frontmatter.excerpt}
           </p>
-
-          {/* Tags */}
-          {post.frontmatter.tags?.length > 0 && (
-            <div className="flex flex-wrap gap-1.5">
-              {post.frontmatter.tags.map((tag) => (
-                <TagBadge key={tag} tag={tag} />
-              ))}
-            </div>
-          )}
         </div>
       </Link>
     </motion.article>

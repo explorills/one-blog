@@ -4,7 +4,7 @@ const modules = import.meta.glob<MarkdownModule>('/content/*.md', { eager: true 
 
 const coverFiles = import.meta.glob('/content/media/*', { eager: true, query: '?url', import: 'default' })
 
-function resolvecover(filename: string): string | null {
+function resolveCover(filename: string): string | null {
   const base = `/content/media/${filename}`
   for (const ext of ['.jpg', '.jpeg', '.png', '.webp']) {
     const key = base + ext
@@ -36,7 +36,7 @@ export function getAllPosts(): BlogPost[] {
         slug: slugFromPath(path),
         frontmatter: mod.frontmatter,
         html: mod.html,
-        coverPath: resolvecover(filename),
+        coverPath: resolveCover(filename),
         readingTime: estimateReadingTime(mod.html),
       }
     })
@@ -45,12 +45,4 @@ export function getAllPosts(): BlogPost[] {
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return getAllPosts().find((p) => p.slug === slug)
-}
-
-export function getAllTags(): string[] {
-  const tags = new Set<string>()
-  for (const post of getAllPosts()) {
-    post.frontmatter.tags?.forEach((t) => tags.add(t))
-  }
-  return Array.from(tags).sort()
 }

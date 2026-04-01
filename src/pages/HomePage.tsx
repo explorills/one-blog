@@ -1,8 +1,6 @@
-import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { ArticleCard } from '@/components/blog/ArticleCard'
-import { TagBadge } from '@/components/blog/TagBadge'
-import { getAllPosts, getAllTags } from '@/lib/blog'
+import { getAllPosts } from '@/lib/blog'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -17,14 +15,7 @@ const stagger = {
 }
 
 export default function HomePage() {
-  const allPosts = getAllPosts()
-  const allTags = getAllTags()
-  const [activeTag, setActiveTag] = useState<string | null>(null)
-
-  const posts = useMemo(() => {
-    if (!activeTag) return allPosts
-    return allPosts.filter((p) => p.frontmatter.tags?.includes(activeTag))
-  }, [allPosts, activeTag])
+  const posts = getAllPosts()
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -52,33 +43,9 @@ export default function HomePage() {
           variants={fadeUp}
           className="text-[13px] sm:text-sm text-muted-foreground mt-2 max-w-lg"
         >
-          Updates, insights, and deep dives from the EXPL.ONE ecosystem.
+          Articles, insights, and perspectives from the EXPL.ONE community.
         </motion.p>
       </motion.div>
-
-      {/* Tag filter */}
-      {allTags.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="flex flex-wrap gap-2 mb-8"
-        >
-          <TagBadge
-            tag="All"
-            active={!activeTag}
-            onClick={() => setActiveTag(null)}
-          />
-          {allTags.map((tag) => (
-            <TagBadge
-              key={tag}
-              tag={tag}
-              active={activeTag === tag}
-              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-            />
-          ))}
-        </motion.div>
-      )}
 
       {/* Article grid */}
       {posts.length > 0 ? (
@@ -86,7 +53,6 @@ export default function HomePage() {
           variants={stagger}
           initial="hidden"
           animate="show"
-          key={activeTag ?? 'all'}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-12"
         >
           {posts.map((post) => (
