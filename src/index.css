@@ -250,6 +250,13 @@
   color: oklch(0.90 0.01 55);
 }
 
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid oklch(0.68 0.14 65 / 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
