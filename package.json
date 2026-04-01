@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bunx --bun vite",
     "start": "bunx --bun vite",
-    "build": "bunx --bun vite build",
+    "build": "bunx --bun vite build && mkdir -p dist/content && cp -r content/media dist/content/",
     "preview": "bunx --bun vite preview",
     "lint": "eslint .",
     "type-check": "tsc --noEmit"

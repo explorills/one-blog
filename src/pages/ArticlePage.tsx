@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Clock, GithubLogo } from '@phosphor-icons/react'
+import { ArrowLeft, Clock, LinkedinLogo } from '@phosphor-icons/react'
 import { ArticleContent } from '@/components/blog/ArticleContent'
 import { getPostBySlug } from '@/lib/blog'
 import { formatDate } from '@/lib/utils'
@@ -27,7 +27,7 @@ export default function ArticlePage() {
 
   if (!post) return <Navigate to="/404" replace />
 
-  const authorGithubUrl = `https://github.com/${post.frontmatter.author}`
+  const authorUrl = post.frontmatter.authorUrl
 
   return (
     <article>
@@ -83,12 +83,12 @@ export default function ArticlePage() {
             <time>{formatDate(post.frontmatter.date)}</time>
             <span className="w-px h-3 bg-border" />
             <a
-              href={authorGithubUrl}
+              href={authorUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 hover:text-primary transition-colors"
             >
-              <GithubLogo weight="regular" className="w-3 h-3" />
+              <LinkedinLogo weight="regular" className="w-3 h-3" />
               {post.frontmatter.author}
             </a>
             <span className="w-px h-3 bg-border" />

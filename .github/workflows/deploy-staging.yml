@@ -30,11 +30,6 @@ jobs:
       env:
         PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
-    - name: Generate author metadata
-      run: bash scripts/generate-authors.sh
-      env:
-        GH_TOKEN: ${{ github.token }}
-
     - name: Build project
       run: bun run build
 
