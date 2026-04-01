@@ -16,7 +16,7 @@ export function ArticleCard({ post }: { post: BlogPost }) {
     >
       <Link
         to={`/article/${post.slug}`}
-        className="group block rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-card/50 hover:shadow-[0_0_30px_oklch(0.68_0.14_65_/_0.06)]"
+        className="group block rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-card/50 hover:shadow-[0_0_30px_oklch(0.92_0_0_/_0.06)]"
       >
         {/* Cover image */}
         <div className="aspect-[16/9] overflow-hidden bg-muted/30">
@@ -31,7 +31,7 @@ export function ArticleCard({ post }: { post: BlogPost }) {
             <div
               className="w-full h-full flex items-center justify-center"
               style={{
-                background: 'linear-gradient(135deg, oklch(0.12 0.02 65), oklch(0.08 0.015 55))',
+                background: 'linear-gradient(135deg, oklch(0.12 0 0), oklch(0.08 0 0))',
               }}
             >
               <span

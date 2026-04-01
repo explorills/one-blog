@@ -7,7 +7,7 @@ import HomePage from '@/pages/HomePage'
 import ArticlePage from '@/pages/ArticlePage'
 import NotFoundPage from '@/pages/NotFoundPage'
 
-const THEME_COLOR = 'oklch(0.68 0.14 65)'
+const THEME_COLOR = 'oklch(0.92 0 0)'
 
 function AnimatedRoutes() {
   const location = useLocation()

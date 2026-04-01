@@ -46,11 +46,11 @@ export default function ArticlePage() {
           <div
             className="w-full h-[240px] sm:h-[300px]"
             style={{
-              background: 'linear-gradient(135deg, oklch(0.12 0.03 65), oklch(0.06 0.015 55))',
+              background: 'linear-gradient(135deg, oklch(0.12 0 0), oklch(0.06 0 0))',
             }}
           />
         )}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[oklch(0.06_0.012_55)] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[oklch(0.06_0_0)] to-transparent" />
       </div>
 
       {/* Article header */}
