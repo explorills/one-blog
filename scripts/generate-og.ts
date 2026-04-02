@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 
 import { join, basename } from 'path'
 import matter from 'gray-matter'
 
-const SITE_URL = 'https://blog.expl.one'
+const SITE_URL = process.env.SITE_URL || 'https://blog.expl.one'
 const SITE_NAME = 'ONE Blog'
 const SITE_DESCRIPTION = 'Articles, insights, and perspectives from the EXPL.ONE community.'
 const DEFAULT_IMAGE = `${SITE_URL}/logo.png`

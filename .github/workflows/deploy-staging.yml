@@ -34,6 +34,8 @@ jobs:
 
     - name: Build project
       run: bun run build
+      env:
+        SITE_URL: https://staging2-all-access-blog.expl.one
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -45,3 +47,13 @@ jobs:
     - name: Deploy to S3 Staging
       run: |
         aws s3 sync ./dist/ s3://staging-one-blog/ --delete
+
+    - name: Upload article OG pages for social crawlers
+      run: |
+        for dir in dist/article/*/; do
+          [ -d "$dir" ] || continue
+          slug=$(basename "$dir")
+          aws s3 cp "$dir/index.html" "s3://staging-one-blog/article/$slug" \
+            --content-type "text/html" \
+            --cache-control "max-age=0, must-revalidate"
+        done
