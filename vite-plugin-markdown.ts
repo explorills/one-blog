@@ -4,7 +4,7 @@ import { marked } from 'marked'
 import { execSync } from 'child_process'
 import path from 'path'
 
-const DEFAULT_AUTHOR = 'G. Orbeliani'
+const DEFAULT_AUTHOR = 'G.Orbeliani'
 const DEFAULT_AUTHOR_URL = 'https://www.linkedin.com/in/g-orbeliani/'
 
 function titleFromFilename(filepath: string): string {

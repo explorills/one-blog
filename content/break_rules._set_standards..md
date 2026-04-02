@@ -11,7 +11,7 @@ We see the symptoms everywhere:
 
 This isn’t just an inconvenience. it’s a systemic risk. when the infrastructure of knowledge, culture, and communication is controlled by a few, the world’s creativity and progress are throttled.
 
-explorills exists to rewrite this reality.
+[EXPL.ONE](https://expl.one) exists to rewrite this reality.
 
 Our ethos is simple: rules are meant to be challenged, standards are meant to be set. we don’t adapt to broken structures, we create new structures strong enough to carry the future.
 
@@ -35,11 +35,11 @@ This isn’t a rebellion for rebellion’s sake. it’s necessity. the tools of 
 The old internet gave us communication.  
 The new internet must give us freedom.
 
-#explorills is not waiting for permission. we’re setting the standards now.
+ONE ecosystem is not waiting for permission. we’re setting the standards now.
 
 The only question left is:
 
 - How long can the world afford to stay stuck in what’s broken?
 
-Follow the journey: @explorills_main  
-Learn more: explorills.com
+Follow the journey: [@explorills_main](https://x.com/explorills_main)
+Learn more: [expl.one](https://expl.one)
