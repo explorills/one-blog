@@ -19,7 +19,7 @@
     "@phosphor-icons/react": "^2.1.7",
     "marked": "^15.0.0",
     "gray-matter": "^4.0.3",
-    "@explorills/one-ecosystem-ui": "0.9.3",
+    "@explorills/one-ecosystem-ui": "^0.9.0",
     "wagmi": "^3.5.0",
     "viem": "^2.0.0",
     "@tanstack/react-query": "^5.0.0"

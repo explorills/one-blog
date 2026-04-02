@@ -25,12 +25,10 @@ jobs:
       env:
         PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
-    # TEMPORARILY DISABLED — pinned to 0.9.3 for production stability
-    # Re-enable when package is ready:
-    # - name: Update @explorills packages to latest
-    #   run: bun update --latest @explorills/one-ecosystem-ui
-    #   env:
-    #     PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+    - name: Update @explorills packages to latest
+      run: bun update --latest @explorills/one-ecosystem-ui
+      env:
+        PACKAGES_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
     - name: Build project
       run: bun run build
