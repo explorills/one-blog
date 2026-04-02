@@ -1,6 +1,12 @@
 import type { Plugin } from 'vite'
 import matter from 'gray-matter'
-import { marked } from 'marked'
+import { marked, Renderer } from 'marked'
+
+const renderer = new Renderer()
+renderer.link = ({ href, title, text }) => {
+  const titleAttr = title ? ` title="${title}"` : ''
+  return `<a href="${href}"${titleAttr} target="_blank" rel="noopener noreferrer">${text}</a>`
+}
 import { execSync } from 'child_process'
 import path from 'path'
 
@@ -43,7 +49,7 @@ export default function markdownPlugin(): Plugin {
       if (!id.endsWith('.md')) return null
 
       const { data: frontmatter, content } = matter(code)
-      const html = marked.parse(content, { async: false }) as string
+      const html = marked.parse(content, { async: false, renderer }) as string
 
       const title = frontmatter.title || titleFromFilename(id)
       const date = frontmatter.date || getGitDate(id)
