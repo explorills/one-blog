@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bunx --bun vite",
     "start": "bunx --bun vite",
-    "build": "bunx --bun vite build && mkdir -p dist/content && cp -r content/media dist/content/",
+    "build": "bunx --bun vite build && mkdir -p dist/content && cp -r content/media dist/content/ && bun scripts/generate-og.ts",
     "preview": "bunx --bun vite preview",
     "lint": "eslint .",
     "type-check": "tsc --noEmit"
