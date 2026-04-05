@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -55,3 +56,8 @@ jobs:
             --content-type "text/html" \
             --cache-control "max-age=0, must-revalidate"
         done
+
+    - name: Invalidate CloudFront cache
+      run: |
+        DIST_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[?Origins.Items[?contains(DomainName, 'staging-one-blog')]].Id" --output text)
+        aws cloudfront create-invalidation --distribution-id $DIST_ID --paths "/*"
