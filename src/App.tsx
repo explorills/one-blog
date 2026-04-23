@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { EcosystemNavbar, EcosystemFooter, OneIdProvider } from '@explorills/one-ecosystem-ui'
 import { Layout } from '@/components/layout/Layout'
-import { getOneIdApiUrl } from '@/lib/api'
 import HomePage from '@/pages/HomePage'
 import ArticlePage from '@/pages/ArticlePage'
 import NotFoundPage from '@/pages/NotFoundPage'
@@ -33,7 +32,7 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <OneIdProvider apiUrl={getOneIdApiUrl()} projectId="1fe344d4623291d85ad7369cbc6d9ec8">
+    <OneIdProvider projectId="1fe344d4623291d85ad7369cbc6d9ec8">
       <BrowserRouter>
         <EcosystemNavbar
           logo="/logo.png"
